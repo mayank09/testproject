@@ -21,6 +21,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
+import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
     BroadcastReceiver receiver;
@@ -35,10 +36,10 @@ public class MainActivity extends AppCompatActivity {
         receiver = new MyReceiver();
         registerReceiver(receiver, filter); */
 
-        AsyncTaskParseJson asyncTaskParseJson = new AsyncTaskParseJson();
-        asyncTaskParseJson.execute();
+
 
         Intent serviceIntent = new Intent(this, LaunchService.class);
+       // serviceIntent.putExtra("User Id",push_message);
         startService(serviceIntent);
     }
 
@@ -52,4 +53,6 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+
 }

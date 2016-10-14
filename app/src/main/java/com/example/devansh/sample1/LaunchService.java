@@ -14,12 +14,16 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.util.Log;
 import android.widget.Toast;
+
+import java.util.concurrent.ExecutionException;
 
 import static android.R.attr.filter;
 
 public class LaunchService extends Service {
+    String push_message = null;
 
     public LaunchService() {
     }
@@ -34,12 +38,31 @@ public class LaunchService extends Service {
 
     @Override
     public int onStartCommand(Intent intent,int flag , int startId) {
-        IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
-        //   filter.addAction(Intent.ACTION_SCREEN_OFF);
+
+       // String myString = intent.getStringExtra("User Id");
+      //          AsyncTaskParseJson asyncTaskParseJson = new AsyncTaskParseJson();
+
+
+
+
+
+      IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
         BroadcastReceiver mReceiver = new MyReceiver();
         registerReceiver(mReceiver, filter);
         Toast.makeText(getApplicationContext()
                 , "service started",Toast.LENGTH_SHORT).show();
+
+
+        //   filter.addAction(Intent.ACTION_SCREEN_OFF);
+
+     /* if(push_message.equals("1")){
+            IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
+            BroadcastReceiver mReceiver = new MyReceiver();
+            registerReceiver(mReceiver, filter);
+            Toast.makeText(getApplicationContext()
+                    , "service started",Toast.LENGTH_SHORT).show();
+        }*/
+
 
         Log.e("#########Service","onStartCommand");
 

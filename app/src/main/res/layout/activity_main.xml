@@ -16,7 +16,7 @@
         android:layout_width="400dp"
         android:layout_height="300dp"
         android:id="@+id/image"
-        android:src="@drawable/image"
+        android:src="@mipmap/image"
         android:contentDescription="My Image"
         />
 

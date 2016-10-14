@@ -1,5 +1,6 @@
 package com.example.devansh.sample1;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -13,6 +14,7 @@ import org.json.JSONObject;
 
 public class AsyncTaskParseJson extends AsyncTask<String, String, String> {
     final String TAG = "AsyncTaskParseJson.java";
+    public static String isPush;
 
     // set your json string url here
     String yourJsonStringUrl = "http://192.168.1.3/anu/helloworld.php";
@@ -28,9 +30,17 @@ public class AsyncTaskParseJson extends AsyncTask<String, String, String> {
 
         // get json string from url
         String myMessage = jParser.makeServiceCall(yourJsonStringUrl);
-        Log.d("#####", myMessage);
+        String stringMessage = null;
+        try {
+            JSONObject jobject = new JSONObject(myMessage);
+            stringMessage = jobject.getString("message");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Log.d("#####", stringMessage);
+        isPush = stringMessage;
 
-        return null;
+        return stringMessage;
     }
 
     @Override
