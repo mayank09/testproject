@@ -14,7 +14,7 @@
 
     <ImageView
         android:layout_width="400dp"
-        android:layout_height="400dp"
+        android:layout_height="300dp"
         android:id="@+id/image"
         android:src="@drawable/image"
         android:contentDescription="My Image"
@@ -26,4 +26,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/message" />
+
+    <Switch
+        android:id="@+id/push_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOn = "Push On"
+        android:textOff="Push Off"/>
 </LinearLayout>
